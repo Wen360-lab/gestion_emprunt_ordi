@@ -1,4 +1,7 @@
 import Table from "@/components/Table"; //On importe le composant Table 
+import Header from "@/components/Header";//On importe le composant Header
+import SearchBar from "@/components/SearchBar";//On importe le composant SearchBar
+import Pagination from "@/components/Pagination";//On importe le composant Pagination
 
 //On définit le tableau d'objets que va contenir le composant Table
 const salles = [
@@ -59,9 +62,22 @@ const salles = [
  * @returns 
  */
 export default function AllSalles() {
-    return (<>
-        <h1>Page qui affiche l ensemble des classe</h1>
-        <Table salles={ salles } />
-    
-    </>);
+    return (
+		<section className="p-4 sm:p-8">
+			{/* L'entête */}
+			<Header/>
+			{/* La carte blanche qui contient la barre de recherche, le tableau et la pagination */}
+      		<div className="bg-white rounded-xl shadow-sm border border-gray-100">
+       			<div className="p-4 border-b border-gray-100">
+					{/* La barre de recherche */}
+					<SearchBar/>
+				</div>
+				{/* Le tableau */}
+				<Table salles={ salles } />
+
+				{/* Le panneau de pagination */}
+				<Pagination/>
+			</div>
+    	</section>
+	);
 }
