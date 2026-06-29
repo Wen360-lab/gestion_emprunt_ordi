@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Table from "@/components/salle/Table"; //On importe le composant Table 
 import Header from "@/components/salle/Header";//On importe le composant Header
 import SearchBar from "@/components/salle/SearchBar";//On importe le composant SearchBar
@@ -66,23 +69,52 @@ const salles = [
  * Page qui affiche toutes les salles de classes
  * @returns 
  */
-export default function AllSalles() {
-    return (
-		<section className="p-4 sm:p-8">
-			{/* L'entête */}
-			<Header/>
-			{/* La carte blanche qui contient la barre de recherche, le tableau et la pagination */}
-      		<div className="bg-white rounded-xl shadow-sm border border-gray-100">
-       			<div className="p-4 border-b border-gray-100">
-					{/* La barre de recherche */}
-					<SearchBar/>
-				</div>
-				{/* Le tableau */}
-				<Table salles={ salles } />
 
-				{/* Le panneau de pagination */}
-				<Pagination/>
+const ITEMS_PER_PAGE = 10;
+
+export default function AllSalles() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Filtrage selon la recherche (insensible à la casse)
+  const filteredSalles = salles.filter((salle) =>
+    salle.nom.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Découpage en pages
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const paginatedSalles = filteredSalles.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+
+    return (
+		// La section générale qui contient la page AllSalle
+		<section className="p-4 sm:p-8">
+			{/* Le header */}
+			<Header />
+			{/* Le conteneur principale de la barre de recherche du tableau et de la pagination*/}
+			<div className="bg-white rounded-xl shadow-sm border border-gray-100">
+				{/* Le conteneur de la barre de recherche */}
+				<div className="p-4 border-b border-gray-100">
+					<SearchBar
+						value={searchTerm}
+						onChange={(value) => {
+						setSearchTerm(value);
+						setCurrentPage(1); // on revient à la page 1 quand on cherche
+						}}
+					/>
+				</div>
+				{/* Le tableau des salles */}
+				<Table salles={paginatedSalles} />
+				 
+				{/* Le système de pagination du tableaun des salles */}
+				<Pagination
+				currentPage={currentPage}
+				totalItems={filteredSalles.length}
+				itemsPerPage={ITEMS_PER_PAGE}
+				onPageChange={setCurrentPage}
+				/>
 			</div>
     	</section>
 	);
 }
+
+
