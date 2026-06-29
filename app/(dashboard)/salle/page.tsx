@@ -1,7 +1,7 @@
-import Table from "@/components/Table"; //On importe le composant Table 
-import Header from "@/components/Header";//On importe le composant Header
-import SearchBar from "@/components/SearchBar";//On importe le composant SearchBar
-import Pagination from "@/components/Pagination";//On importe le composant Pagination
+import Table from "@/components/salle/Table"; //On importe le composant Table 
+import Header from "@/components/salle/Header";//On importe le composant Header
+import SearchBar from "@/components/salle/SearchBar";//On importe le composant SearchBar
+import Pagination from "@/components/salle/Pagination";//On importe le composant Pagination
 
 //On définit le tableau d'objets que va contenir le composant Table
 const salles = [
@@ -12,6 +12,7 @@ const salles = [
 	responsable : "Pierre Dubois",
 	chefDeClasse : "Marie Curie",
 	capacite : 20,
+	effectif : 30,
 	ordinateurs : 18,
 	},
 
@@ -22,6 +23,7 @@ const salles = [
 	responsable : "Pierre Dubois",
 	chefDeClasse : "Louis Pasteur",
 	capacite : 25,
+	effectif : 35,
 	ordinateurs : 24,
 	},
 
@@ -32,6 +34,7 @@ const salles = [
 	responsable : "Isabelle Moreau",
 	chefDeClasse : "Jean Moulin",
 	capacite : 30,
+	effectif : 45,
 	ordinateurs : 28,
 	},
 
@@ -42,6 +45,7 @@ const salles = [
 	responsable : "Michelle Faure",
 	chefDeClasse : "Sophie Germain",
 	capacite : 20,
+	effectif : 45,
 	ordinateurs : 19,
 	},
 
@@ -52,6 +56,7 @@ const salles = [
 	responsable : "Michelle Faure",
 	chefDeClasse : "Victor Hugo",
 	capacite : 40,
+	effectif : 45,
 	ordinateurs : 38,
 	},
 

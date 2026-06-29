@@ -16,6 +16,7 @@ interface Salle {
     responsable : string;
     chefDeClasse : string;
     capacite : number;
+    effectif : number;
     ordinateurs : number
 }
 
@@ -36,6 +37,7 @@ export default function Table({ salles }: TableProps) {
                         <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Responsable</th>
                         <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Chef de classe</th>
                         <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Capacité</th>
+                        <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Effectif</th>
                         <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Ordinateurs</th>
                         <th className="text-left text-base font-bold text-gray-1 px-4 py-3">Actions</th>
                     </tr>
@@ -49,6 +51,7 @@ export default function Table({ salles }: TableProps) {
                         <td className="px-4 py-4 text-gray-1">{salle.responsable}</td>
                         <td className="px-4 py-4 text-gray-1">{salle.chefDeClasse}</td>
                         <td className="px-4 py-4 text-gray-1">{salle.capacite} place(s)</td>
+                        <td className="px-4 py-4 text-gray-1">{salle.effectif}</td>
                         <td className="px-4 py-4 text-gray-1">{salle.ordinateurs} ordinateur(s)</td>
                         <td className="px-4 py-4">
                         <div className="flex gap-2">
