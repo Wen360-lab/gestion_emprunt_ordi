@@ -69,8 +69,8 @@ const salles = [
  * Page qui affiche toutes les salles de classes
  * @returns 
  */
-
-const ITEMS_PER_PAGE = 10;
+// Le nombre de salle par 
+const ITEMS_PER_PAGE = 3;
 
 export default function AllSalles() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -89,29 +89,36 @@ export default function AllSalles() {
 		// La section générale qui contient la page AllSalle
 		<section className="p-4 sm:p-8">
 			{/* Le header */}
-			<Header />
+            <Header 
+                title="Salles" 
+                subtitle="Liste des salles disponibles" 
+                buttonLabel="Nouvelle salle" 
+                onButtonClick={() => console.log("ouvrir modal salle")}
+            />
 			{/* Le conteneur principale de la barre de recherche du tableau et de la pagination*/}
 			<div className="bg-white rounded-xl shadow-sm border border-gray-100">
 				{/* Le conteneur de la barre de recherche */}
 				<div className="p-4 border-b border-gray-100">
 					<SearchBar
-						value={searchTerm}
-						onChange={(value) => {
-						setSearchTerm(value);
-						setCurrentPage(1); // on revient à la page 1 quand on cherche
-						}}
-					/>
-				</div>
+                        value={searchTerm}
+                        onChange={(value) => {
+                            setSearchTerm(value);
+                            setCurrentPage(1);
+                        }}
+                        placeholder="Rechercher une salle..."
+                    />
+                </div>
 				{/* Le tableau des salles */}
 				<Table salles={paginatedSalles} />
 				 
 				{/* Le système de pagination du tableaun des salles */}
 				<Pagination
-				currentPage={currentPage}
-				totalItems={filteredSalles.length}
-				itemsPerPage={ITEMS_PER_PAGE}
-				onPageChange={setCurrentPage}
-				/>
+                     currentPage={currentPage}
+                    totalItems={filteredSalles.length}
+                    itemsPerPage={ITEMS_PER_PAGE}
+                    onPageChange={setCurrentPage}
+                    itemLabel="salles"
+                />
 			</div>
     	</section>
 	);
