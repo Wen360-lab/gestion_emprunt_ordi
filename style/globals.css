@@ -16,7 +16,7 @@
 @theme inline {
     --color-primary: var(--text-primary);
     --color-light: var(--text-light);
-    --font-gray-1: var(--text-gray-1);
+    --color-gray-1: var(--text-gray-1);
 
     --font-roboto:  "Roboto", sans-serif;
     --font-inter: "Inter", sans-serif;
