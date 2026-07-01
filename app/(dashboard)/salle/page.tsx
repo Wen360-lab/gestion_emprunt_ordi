@@ -69,7 +69,7 @@ const salles = [
  * Page qui affiche toutes les salles de classes
  * @returns 
  */
-// Le nombre de salle par 
+// Le nombre d'items par page 
 const ITEMS_PER_PAGE = 3;
 
 export default function AllSalles() {
